@@ -52,8 +52,8 @@ test("desktop icons can be dragged to a new cell, and the spot is saved", async 
   await page.mouse.down();
   await page.mouse.move(before.x + 300, before.y + 200, { steps: 8 });
   await page.mouse.up();
-  const after = (await icon.boundingBox())!;
-  expect(after.x).toBeGreaterThan(before.x + 150);
+  // The icon glides into its new cell, so wait for it rather than reading the position instantly.
+  await expect.poll(async () => (await icon.boundingBox())!.x).toBeGreaterThan(before.x + 150);
   expect((await savedSettings(page)).iconPositions?.about).toBeTruthy();
 });
 
