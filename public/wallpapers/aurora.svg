@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1920" height="1200" viewBox="0 0 1920 1200">
+  <defs>
+    <linearGradient id="night" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#03111c"/>
+      <stop offset=".6" stop-color="#062332"/>
+      <stop offset="1" stop-color="#0a3340"/>
+    </linearGradient>
+    <linearGradient id="a1" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#2cf0b4" stop-opacity="0"/>
+      <stop offset=".3" stop-color="#2cf0b4" stop-opacity=".9"/>
+      <stop offset=".7" stop-color="#36c8f0" stop-opacity=".8"/>
+      <stop offset="1" stop-color="#7a6cf0" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="a2" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#5df2a0" stop-opacity="0"/>
+      <stop offset=".45" stop-color="#5df2a0" stop-opacity=".7"/>
+      <stop offset="1" stop-color="#2bb4d8" stop-opacity="0"/>
+    </linearGradient>
+    <filter id="glow" x="-20%" y="-50%" width="140%" height="200%"><feGaussianBlur stdDeviation="34"/></filter>
+    <filter id="haze" x="-20%" y="-50%" width="140%" height="200%"><feGaussianBlur stdDeviation="70"/></filter>
+  </defs>
+  <rect width="1920" height="1200" fill="url(#night)"/>
+  <g fill="#cfe9ff">
+    <circle cx="140" cy="120" r="1.6" opacity=".8"/><circle cx="380" cy="70" r="1.2" opacity=".6"/><circle cx="620" cy="160" r="1.4" opacity=".7"/>
+    <circle cx="910" cy="60" r="1.1" opacity=".5"/><circle cx="1180" cy="130" r="1.7" opacity=".8"/><circle cx="1460" cy="80" r="1.2" opacity=".6"/>
+    <circle cx="1720" cy="170" r="1.5" opacity=".7"/><circle cx="1840" cy="60" r="1.1" opacity=".5"/><circle cx="260" cy="260" r="1.1" opacity=".4"/>
+    <circle cx="1040" cy="240" r="1.2" opacity=".45"/><circle cx="1620" cy="300" r="1" opacity=".4"/><circle cx="760" cy="300" r="1" opacity=".35"/>
+  </g>
+  <path d="M-100 520 C 300 300 700 640 1100 420 S 1700 260 2020 380" fill="none" stroke="url(#a1)" stroke-width="120" filter="url(#haze)" opacity=".7"/>
+  <path d="M-100 520 C 300 300 700 640 1100 420 S 1700 260 2020 380" fill="none" stroke="url(#a1)" stroke-width="46" filter="url(#glow)"/>
+  <path d="M-80 640 C 360 470 760 760 1180 560 S 1760 470 2000 560" fill="none" stroke="url(#a2)" stroke-width="34" filter="url(#glow)" opacity=".8"/>
+  <path d="M0 1010 C 240 960 420 1000 640 950 S 1100 900 1340 960 S 1760 920 1920 960 V1200 H0 Z" fill="#021018"/>
+  <path d="M0 1080 C 300 1040 640 1100 980 1050 S 1600 1020 1920 1070 V1200 H0 Z" fill="#010a10"/>
+</svg>

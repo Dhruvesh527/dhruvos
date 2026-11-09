@@ -1,0 +1,13 @@
+import type { Cell, IconSize } from "./os-settings.mjs";
+export type CellSize = { width: number; height: number };
+export type Grid = { cols: number; rows: number };
+export type Rect = { x: number; y: number; width: number; height: number };
+export const CELL_SIZES: Record<IconSize, CellSize>;
+export const GRID_PADDING: { x: number; y: number };
+export function gridSize(bounds: { width: number; height: number }, cell: CellSize): Grid;
+export function cellToPoint(cell: Cell, size: CellSize): { x: number; y: number };
+export function pointToCell(point: { x: number; y: number }, size: CellSize, grid: Grid): Cell;
+export function nearestFreeCell(target: Cell, taken: Set<string>, grid: Grid): Cell | null;
+export function layoutIcons(ids: string[], saved: Record<string, Cell> | undefined, grid: Grid): Record<string, Cell>;
+export function dropCell(layout: Record<string, Cell>, id: string, target: Cell, grid: Grid): Cell;
+export function iconsInRect(rect: Rect, layout: Record<string, Cell>, size: CellSize): string[];

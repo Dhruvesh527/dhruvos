@@ -1,0 +1,13 @@
+node_modules/
+.next/
+out/
+*.tsbuildinfo
+.env*
+!.env.example
+.verification/
+test-results/
+playwright-report/
+
+# Private notes (kept on this computer only)
+TODO.md
+linkedin/PLAN.md
