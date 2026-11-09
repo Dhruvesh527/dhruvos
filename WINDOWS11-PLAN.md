@@ -2,7 +2,7 @@
 
 **Goal:** turn the portfolio into a desktop that feels like a fully working Windows 11 PC: real boot, lock screen and sign-in, a centred taskbar, Start menu, search, snap layouts, resizable windows, smooth animations everywhere, and real apps inside. First make the website great; then add the personal details (see `TODO.md`).
 
-Written: 2026-11-06 · Status: **approved, in progress**. Steps 1–6 of 7 done (2026-11-07); step 7 tests, your details and GitHub done 2026-11-09; deploy still to do.
+Written: 2026-11-06 · Status: **approved, in progress**. Steps 1–6 of 7 done (2026-11-07); all 7 steps done 2026-11-09: live at https://dhruvos-blue.vercel.app.
 
 ---
 
@@ -145,7 +145,7 @@ After the site is ready, you add (from `TODO.md`): Experience, Achievements, ré
 | 4 ✅ | 4 | Start menu, power menu, search (done 2026-11-07) |
 | 5 ✅ | 5 | Apps (Terminal, Browser, Settings, Mail, Photos…) (done 2026-11-07) |
 | 6 ✅ | 6 + 7 | Phone/tablet, animation polish, speed (done 2026-11-07) |
-| 7 ◐ | 8 + 9 | Full test pass ✅, your details ✅, GitHub + green CI ✅ (2026-11-09), then deploy |
+| 7 ✅ | 8 + 9 | Full test pass, your details, GitHub + green CI, deployed to Vercel (done 2026-11-09) |
 
 I show you a working preview after each step, and you can change direction at any point.
 

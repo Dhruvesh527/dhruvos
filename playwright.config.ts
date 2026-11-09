@@ -9,10 +9,13 @@ import { defineConfig } from "@playwright/test";
  * Locally this uses the Microsoft Edge that ships with Windows (no browser download needed).
  * In CI it uses Playwright's Chromium (`npx playwright install chromium`).
  * Override with PW_CHANNEL=chrome (or PW_CHANNEL= for bundled Chromium).
+ *
+ * Test the live site instead: BASE_URL=https://dhruvos-blue.vercel.app npm run test:e2e
  */
 const CI = Boolean(process.env.CI);
 const channel = process.env.PW_CHANNEL ?? (CI ? "" : "msedge");
 const PORT = Number(process.env.PORT ?? 3210);
+const BASE_URL = process.env.BASE_URL;
 
 export default defineConfig({
   testDir: "tests/e2e",
@@ -25,13 +28,14 @@ export default defineConfig({
   forbidOnly: CI,
   reporter: CI ? [["github"], ["html", { open: "never" }]] : [["list"], ["html", { open: "never" }]],
   use: {
-    baseURL: `http://127.0.0.1:${PORT}`,
+    baseURL: BASE_URL ?? `http://127.0.0.1:${PORT}`,
     viewport: { width: 1440, height: 900 },
     ...(channel ? { channel } : {}),
     trace: "retain-on-failure",
     screenshot: "only-on-failure",
   },
-  webServer: {
+  // No local server needed when testing a deployed site.
+  webServer: BASE_URL ? undefined : {
     command: "node scripts/preview.mjs",
     url: `http://127.0.0.1:${PORT}/`,
     reuseExistingServer: !CI,

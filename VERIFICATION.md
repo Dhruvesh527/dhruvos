@@ -9,7 +9,8 @@ Last full check: 2026-11-09, on Windows 11 with Microsoft Edge and Playwright's 
 | Browser tests (Playwright) | `npm run test:e2e` | ✅ 61 / 61 (Edge and Chromium) |
 | Production build + prefetch fix | `npm run build` | ✅ |
 | Exported links | `npm run verify` | ✅ all resolve |
-| Lighthouse (local, gzip on) | see `TODO.md` | home: phone 98–100 / 100 / 100 / 100 · desktop 100 × 4; /resume and /simple: accessibility, best practices, SEO 100 |
+| Lighthouse, live site (2026-11-09) | [dhruvos-blue.vercel.app](https://dhruvos-blue.vercel.app) | desktop 100 / 100 / 100 / 100 · phone performance 78–93 (varies with test-machine load; accessibility, best practices, SEO 100) |
+| Browser tests against the live site | `BASE_URL=https://dhruvos-blue.vercel.app npm run test:e2e` | ✅ 61 / 61 |
 
 ## What the browser tests cover (`tests/e2e/`)
 | File | Tests | Covers |
@@ -28,4 +29,4 @@ Every test also fails if the page throws an uncaught error or logs a console err
 ## Not yet verified
 - Real phones (Android, iPhone/Safari) and Firefox. The tests emulate phone and tablet sizes and touch in Edge/Chromium only.
 - A screen-reader pass (NVDA/VoiceOver). Lighthouse accessibility is 100, but that's automated.
-- Lighthouse and the link check on the real domain: the site is not deployed yet.
+- A Google PageSpeed Insights run (independent of the test laptop).
