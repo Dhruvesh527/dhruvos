@@ -11,3 +11,6 @@ playwright-report/
 # Private notes (kept on this computer only)
 TODO.md
 linkedin/PLAN.md
+
+.vercel
+.env*

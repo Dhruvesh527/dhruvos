@@ -2,6 +2,8 @@
 
 [![CI](https://github.com/Dhruvesh527/dhruvos/actions/workflows/ci.yml/badge.svg)](https://github.com/Dhruvesh527/dhruvos/actions/workflows/ci.yml)
 
+**Live: [dhruvos-blue.vercel.app](https://dhruvos-blue.vercel.app)** · [Simple view](https://dhruvos-blue.vercel.app/simple/) · [Résumé](https://dhruvos-blue.vercel.app/resume/)
+
 The portfolio of **Dhruvesh Gohil**, full-stack developer, built as a computer you can power on. You press a power button, the laptop boots, you sign in on a lock screen, and then explore projects through a desktop inspired by Windows 11: windows you can drag, resize and snap, a Start menu with search, a terminal, and a browser.
 
 Built with **Next.js 16 (static export), React 19, TypeScript and plain CSS**. No UI library, no animation library: animations use CSS and the Web Animations API.
@@ -70,3 +72,5 @@ The site is a static export (`out/`), so any static host works (Vercel, Netlify,
 1. Copy `.env.example` to `.env.local` and set `NEXT_PUBLIC_SITE_URL` to the real https address (used for metadata and the sitemap).
 2. Run `npm run build`. `scripts/fix-prefetch.mjs` runs automatically after the build, so Next.js prefetch files don't 404 on static hosts.
 3. Upload `out/`, or connect the repository to the host.
+
+This project is deployed on **Vercel**, connected to this repository: every push to `main` deploys to production. `NEXT_PUBLIC_SITE_URL` is set in the Vercel project settings.
