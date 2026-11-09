@@ -57,6 +57,27 @@ test("desktop icons can be dragged to a new cell, and the spot is saved", async 
   expect((await savedSettings(page)).iconPositions?.about).toBeTruthy();
 });
 
+test("a very fast icon drag still drops in the new cell", async ({ page }) => {
+  // Regression: the drop used to read React state, which lags behind a quick flick.
+  // Press, move and release are dispatched with no frames in between.
+  await page.getByRole("button", { name: "Minimize Projects" }).first().click();
+  await settle(page);
+  const icon = page.locator('.desktop-icon[data-app="about"]');
+  const before = (await icon.boundingBox())!;
+  await icon.evaluate(element => {
+    const box = element.getBoundingClientRect();
+    const x = box.x + box.width / 2, y = box.y + 30;
+    const fire = (type: string, dx: number, dy: number) => element.dispatchEvent(new PointerEvent(type, {
+      bubbles: true, cancelable: true, composed: true, pointerId: 1, pointerType: "mouse", isPrimary: true,
+      button: 0, buttons: type === "pointerup" ? 0 : 1, clientX: x + dx, clientY: y + dy,
+    }));
+    fire("pointerdown", 0, 0);
+    for (let step = 1; step <= 4; step++) fire("pointermove", 75 * step, 50 * step);
+    fire("pointerup", 300, 200);
+  });
+  await expect.poll(async () => (await icon.boundingBox())!.x).toBeGreaterThan(before.x + 150);
+});
+
 test("drag-selecting on the desktop selects icons (without selecting text)", async ({ page }) => {
   await page.getByRole("button", { name: "Minimize Projects" }).first().click();
   await settle(page);

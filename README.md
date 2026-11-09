@@ -1,5 +1,7 @@
 # DhruvOS
 
+[![CI](https://github.com/Dhruvesh527/dhruvos/actions/workflows/ci.yml/badge.svg)](https://github.com/Dhruvesh527/dhruvos/actions/workflows/ci.yml)
+
 The portfolio of **Dhruvesh Gohil**, full-stack developer, built as a computer you can power on. You press a power button, the laptop boots, you sign in on a lock screen, and then explore projects through a desktop inspired by Windows 11: windows you can drag, resize and snap, a Start menu with search, a terminal, and a browser.
 
 Built with **Next.js 16 (static export), React 19, TypeScript and plain CSS**. No UI library, no animation library: animations use CSS and the Web Animations API.

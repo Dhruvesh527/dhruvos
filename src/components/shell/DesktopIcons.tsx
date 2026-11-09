@@ -27,7 +27,11 @@ const coarse = () => window.matchMedia("(pointer: coarse)").matches;
 export default function DesktopIcons({ apps, bounds, mobile, selected, onSelect, onOpen, onContextMenu, registerLauncher, refreshKey }: Props) {
   const { settings, update } = useSettings();
   const layer = useRef<HTMLDivElement>(null);
-  const [drag, setDrag] = useState<Drag | null>(null);
+  const [drag, setDragState] = useState<Drag | null>(null);
+  // The live drag also lives in a ref: pointer events can arrive faster than React re-renders,
+  // and the drop must see the latest position even if the last move hasn't rendered yet.
+  const dragRef = useRef<Drag | null>(null);
+  const setDrag = (next: Drag | null) => { dragRef.current = next; setDragState(next); };
   const [band, setBand] = useState<Band | null>(null);
   const justDragged = useRef(false);
 
@@ -66,6 +70,7 @@ export default function DesktopIcons({ apps, bounds, mobile, selected, onSelect,
     event.currentTarget.setPointerCapture(event.pointerId);
   };
   const moveDrag = (event: PointerEvent<HTMLButtonElement>) => {
+    const drag = dragRef.current;
     if (!drag || drag.pointer !== event.pointerId) return;
     const dx = event.clientX - drag.startX;
     const dy = event.clientY - drag.startY;
@@ -74,6 +79,7 @@ export default function DesktopIcons({ apps, bounds, mobile, selected, onSelect,
     setDrag({ ...drag, dx, dy, moved: true });
   };
   const endDrag = () => {
+    const drag = dragRef.current;
     if (!drag) return;
     if (drag.moved) {
       const origin = cellToPoint(layout[drag.id], cell);
