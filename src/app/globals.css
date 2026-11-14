@@ -545,7 +545,7 @@ img.resume-photo{object-fit:cover;object-position:50% 18%;background:oklch(.95 0
 .sm-all-list{display:flex;flex-direction:column;gap:1px}
 .sm-letter{display:block;margin:10px 10px 4px;font-size:12px;font-weight:700;color:var(--blue)}
 .sm-all-item{padding:6px 10px}
-.sm-all-item>span{flex:1;font-size:13px}
+.sm-all-item>.sm-all-label{flex:1;font-size:13px}
 .sm-footer{display:flex;align-items:center;justify-content:space-between;flex-shrink:0;padding:10px 26px;border-top:1px solid var(--glass-border);background:var(--ov-1)}
 .sm-user{display:flex;align-items:center;gap:10px;padding:6px 12px 6px 6px;border-radius:6px;font-size:13px;color:var(--ink);transition:background-color .12s}
 .sm-user:hover,.sm-power-button:hover,.sm-power-button.active{background:var(--ov-2)}
@@ -960,3 +960,7 @@ img.resume-photo{object-fit:cover;object-position:50% 18%;background:oklch(.95 0
   .resume-content section{padding:14px 0}
   .resume-content>header{margin-bottom:14px}
 }
+
+/* List icons (All apps, search results): one 40px square tile for every entry */
+.sm-result-icon.folder .folder-art.small,.sm-all-item .sm-result-icon.folder .folder-art.small{transform:none;margin:0}
+.sm-app-art.sm-list-art{width:40px;height:40px;border-radius:8px;font-size:17px}

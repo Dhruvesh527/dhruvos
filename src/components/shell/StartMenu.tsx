@@ -43,8 +43,9 @@ function Highlight({ text, query }: { text: string; query: string }) {
 
 function ResultIcon({ entry }: { entry: OsSearchEntry }) {
   if (entry.image) return <img className="sm-result-thumb" src={entry.image} alt="" width="40" height="40" />;
-  if (entry.id === "app:projects") return <FolderIcon small />;
-  if (entry.id === "link:linkedin") return <span className="sm-app-art linkedin small" aria-hidden="true">in</span>;
+  // Every list icon is the same 40px square tile, so the names line up.
+  if (entry.id === "app:projects") return <span className="sm-result-icon folder"><FolderIcon small /></span>;
+  if (entry.id === "link:linkedin") return <span className="sm-app-art linkedin sm-list-art" aria-hidden="true">in</span>;
   const Icon = entry.icon;
   return Icon ? <span className="sm-result-icon"><Icon size={18} /></span> : null;
 }
@@ -165,7 +166,7 @@ export default function StartMenu({ open, mode, seed, theme, onClose, onRun }: P
                   <div key={entry.id}>
                     {showLetter && <span className="sm-letter">{letter}</span>}
                     <button className="sm-all-item" onClick={() => run(entry.action)}>
-                      <ResultIcon entry={entry} /><span>{entry.title}</span>
+                      <ResultIcon entry={entry} /><span className="sm-all-label">{entry.title}</span>
                       {entry.action.type === "link" && entry.action.external && <ArrowUpRight size={14} className="sm-external" />}
                     </button>
                   </div>

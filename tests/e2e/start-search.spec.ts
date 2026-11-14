@@ -26,6 +26,13 @@ test.describe("Start and search", () => {
     await page.locator("#start-button").click();
     await page.locator(".sm-pill", { hasText: "All apps" }).click();
     expect(await page.locator(".sm-letter").count()).toBeGreaterThanOrEqual(4);
+    // Every app icon is a square tile, not stretched across the row.
+    const icons = await page.locator(".sm-all-item > :first-child").evaluateAll(els => els.map(el => {
+      const box = el.getBoundingClientRect();
+      return { w: Math.round(box.width), h: Math.round(box.height) };
+    }));
+    expect(icons.length).toBeGreaterThanOrEqual(8);
+    for (const icon of icons) expect(Math.abs(icon.w - icon.h), JSON.stringify(icon)).toBeLessThanOrEqual(2);
     await page.keyboard.press("Escape");
     await expect(page.locator(".start-menu")).toHaveCount(0);
   });
